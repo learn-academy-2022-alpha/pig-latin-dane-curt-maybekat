@@ -55,13 +55,25 @@ class App extends Component{
       // 3. If the vowels array is empty and the word contains a "y", y is the vowel
       // 4. IF the word is a qu or is in the first syllable, move the u with q.
 
+      const vowelsRegex = /[aeiou]/
+
       // your code here!
-      let translatedWords = ""
+      let translatedWord = ""
+      const vowelIdx = currentWord.search(vowelsRegex)
       if (!vowelsArray.includes(currentWord[0])) {
         if (!vowelsArray.includes(currentWord[1])) {
-          return
-        } else ()
+          translatedWord = currentWord.slice(vowelIdx) + currentWord.slice(0, vowelIdx) + "ay"
+        } else {
+          translatedWord = currentWord.slice(vowelIdx) + currentWord[0] + "ay"
+        }
+      } else {
+        if (vowelsArray.length === 0 && currentWord.includes("y")) {
+          const yIdx = currentWord.search(/y/)
+          translatedWord = currentWord.slice(yIdx) + currentWord.slice(0, yIdx) + "ay"
+        }
+        translatedWord = currentWord + "way"
       }
+      console.log(translatedWord)
 
 
 
