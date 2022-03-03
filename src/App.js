@@ -28,12 +28,42 @@ class App extends Component{
       // ACTION ITEM: use "currentWord" as a starting point for your code
       console.log("currentWord:", currentWord)
 
+      const vowels = "aeiou"
+
       let vowelsArray = currentWord.split("").filter(vowel => {
-        return vowel === "a" || vowel === "e" || vowel === "i" || vowel === "o" || vowel === "u"
+        // return vowel === "a" || vowel === "e" || vowel === "i" || vowel === "o" || vowel === "u"
+          return vowels.split("").includes(vowel.toLowerCase())
       })
       console.log("vowelsArray:", vowelsArray)
 
+      // Aye burgers quick give me some by the door yay
+      // ayeway urgersbay ickquay ivegay emway omesay ybay ethay oorday ayyay
+
+      // Thoughts:
+      // Organized phrase into the conditions set forth to see/understand input/output
+      // Translated the phrase by hand to the desired output
+      // If the word is only single letter with no vowels as an input - what to do?
+      // Puncation?
+      // If user inputs only spaces or random symbols: @$$
+
+      //Pseudo Code:
+      // Create a empty string for translated word
+      // Check each Conditional:
+      // 1. Check if the words starts with a consonant
+      // 1.5. Check if the word starts with multiple consonants
+      // 2. Check if the word starts with a vowel.
+      // 3. If the vowels array is empty and the word contains a "y", y is the vowel
+      // 4. IF the word is a qu or is in the first syllable, move the u with q.
+
       // your code here!
+      let translatedWords = ""
+      if (!vowelsArray.includes(currentWord[0])) {
+        if (!vowelsArray.includes(currentWord[1])) {
+          return
+        } else ()
+      }
+
+
 
       // Remember: console.log is your friend :)
 
