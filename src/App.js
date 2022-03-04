@@ -60,18 +60,25 @@ class App extends Component{
       // your code here!
       let translatedWord = ""
       const vowelIdx = currentWord.search(vowelsRegex)
-      if (!vowelsArray.includes(currentWord[0])) {
+      if (currentWord.toLowerCase().includes("qu")) {
+          const vowelsWithoutU = /[aeio]/
+          const vowelNoUIdx = currentWord.search(vowelsWithoutU)
+          translatedWord = currentWord.slice(vowelNoUIdx) + currentWord.slice(0, vowelNoUIdx) + "ay"
+        } else if (!vowelsArray.includes(currentWord[0])) {
         if (!vowelsArray.includes(currentWord[1])) {
           translatedWord = currentWord.slice(vowelIdx) + currentWord.slice(0, vowelIdx) + "ay"
         } else {
           translatedWord = currentWord.slice(vowelIdx) + currentWord[0] + "ay"
         }
+      } else if (vowelsArray.includes(currentWord[0])) {
+          translatedWord = currentWord + "way"
       } else {
-        if (vowelsArray.length === 0 && currentWord.includes("y")) {
-          const yIdx = currentWord.search(/y/)
-          translatedWord = currentWord.slice(yIdx) + currentWord.slice(0, yIdx) + "ay"
+        if (vowelsArray.length === 0) {
+          if (currentWord.includes("y")) {
+            const yIdx = currentWord.search(/y/)
+            translatedWord = currentWord.slice(yIdx) + currentWord.slice(0, yIdx) + "ay"
+          }
         }
-        translatedWord = currentWord + "way"
       }
       console.log(translatedWord)
 
@@ -81,7 +88,7 @@ class App extends Component{
 
 
       // ACTION ITEM: change the value of currentWord to the name of whatever variable you made containing your Pig Latin'd word
-      return currentWord
+      return translatedWord.toLowerCase()
     })
 
 
