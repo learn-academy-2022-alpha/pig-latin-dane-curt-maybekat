@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './App.css'
 import butcherPig from './assets/butcherPig.jpeg'
 
-class App extends Component{
-  constructor(props){
+class App extends Component {
+  constructor(props) {
     super(props)
     // the state object holds information that can be displayed to the user and updated throughout the program
     this.state = {
@@ -32,7 +32,7 @@ class App extends Component{
 
       let vowelsArray = currentWord.split("").filter(vowel => {
         // return vowel === "a" || vowel === "e" || vowel === "i" || vowel === "o" || vowel === "u"
-          return vowels.split("").includes(vowel.toLowerCase())
+        return vowels.split("").includes(vowel.toLowerCase())
       })
       console.log("vowelsArray:", vowelsArray)
 
@@ -61,17 +61,17 @@ class App extends Component{
       let translatedWord = ""
       const vowelIdx = currentWord.search(vowelsRegex)
       if (currentWord.toLowerCase().includes("qu")) {
-          const vowelsWithoutU = /[aeio]/
-          const vowelNoUIdx = currentWord.search(vowelsWithoutU)
-          translatedWord = currentWord.slice(vowelNoUIdx) + currentWord.slice(0, vowelNoUIdx) + "ay"
-        } else if (!vowelsArray.includes(currentWord[0])) {
+        const vowelsWithoutU = /[aeio]/
+        const vowelNoUIdx = currentWord.search(vowelsWithoutU)
+        translatedWord = currentWord.slice(vowelNoUIdx) + currentWord.slice(0, vowelNoUIdx) + "ay"
+      } else if (!vowelsArray.includes(currentWord[0])) {
         if (!vowelsArray.includes(currentWord[1])) {
           translatedWord = currentWord.slice(vowelIdx) + currentWord.slice(0, vowelIdx) + "ay"
         } else {
           translatedWord = currentWord.slice(vowelIdx) + currentWord[0] + "ay"
         }
       } else if (vowelsArray.includes(currentWord[0])) {
-          translatedWord = currentWord + "way"
+        translatedWord = currentWord + "way"
       } else {
         if (vowelsArray.length === 0) {
           if (currentWord.includes("y")) {
@@ -99,7 +99,7 @@ class App extends Component{
 
     // the setState method will take your information from "translatedWords" and update the state object that is displayed to the user
     // no need to change this method
-    this.setState({phraseTranslated: translatedWords})
+    this.setState({ phraseTranslated: translatedWords })
   }
 
   restartGame = () => {
@@ -121,7 +121,7 @@ class App extends Component{
   // no need to modify this method
   handleInput = (e) => {
     // this method takes the input and saves the value in this.state.phrase so we can use the input in our program
-    this.setState({phrase: e.target.value})
+    this.setState({ phrase: e.target.value })
   }
 
   render() {
@@ -148,7 +148,7 @@ class App extends Component{
           <button onClick={this.restartGame}>Clear</button>
         </div>
         <p>{this.state.phraseTranslated}</p>
-        <footer>Coded by ~your name here~</footer>
+        <footer>Coded by Curt & Dane</footer>
       </>
     )
   }
